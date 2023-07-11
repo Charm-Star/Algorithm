@@ -23,15 +23,16 @@ public class P16953{
             int dNum =  currNum*2;
             String numToString = String.valueOf(currNum)+"1";
             int StirngToNum  = Integer.parseInt(numToString);
+
             if(dNum <= 200) {
 
                 q.offer(new int[]{dNum, count + 1});
             }
 
 
-            if(StirngToNum <= 200){
+            if(StringToNum <= 200){
 
-                q.offer(new int[] {StirngToNum,count+1});
+                q.offer(new int[] {StringToNum,count+1});
             }
 
 
