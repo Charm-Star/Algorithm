@@ -1,52 +1,43 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
-import java.util.*;
+class P16953 {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
+        int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
 
-public class P16953{
+        Queue<long[]> queue = new LinkedList<>();
+        queue.offer(new long[]{A, 1});
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+        int minOperations = -1;
 
-        Queue<int[]> q = new LinkedList<>();
+        while (!queue.isEmpty()) {
+            long[] current = queue.poll();
+            long currentValue = current[0];
+            long count = current[1];
 
-        q.add(new int[] {n,1});
-        while(!q.isEmpty()){
-            int[] curr = q.poll();
-            int currNum = curr[0];
-            int count = curr[1];
-            if (m == currNum){
-                System.out.println(count);
+            if (currentValue == B) {
+                minOperations = (int) count;
                 break;
             }
-            int dNum =  currNum*2;
-            String numToString = String.valueOf(currNum)+"1";
-            int StringToNum  = Integer.parseInt(numToString);
 
-            if(dNum <= m) {
-
-                q.offer(new int[]{dNum, count + 1});
+            long nextValue1 = currentValue * 2;
+            if (nextValue1 <= B) {
+                queue.offer(new long[]{nextValue1, count + 1});
             }
 
-
-            if(StringToNum <= m){
-
-                q.offer(new int[] {StringToNum,count+1});
+            long nextValue2 = currentValue * 10 + 1;
+            if (nextValue2 <= B) {
+                queue.offer(new long[]{nextValue2, count + 1});
             }
-
-
-
-
         }
-        System.out.println(-1);
-        
 
-
-
-
-
-
+        System.out.println(minOperations);
     }
-
 }
