@@ -30,9 +30,7 @@ public class P14501 {
     public static void work(int index, int sum) {
 
         if(index == n) {
-            if(ans < sum){
-                ans = sum;
-            }
+            ans = Math.max(ans,sum);
             return;
         }
 
