@@ -23,10 +23,7 @@ class JoyStick {
             }
 
         }
-
-
         int lindex = 0;
-
         for(int i = len -1 ; i >= 0;i--){
             if(name.charAt(i)!='A'){
                 lindex = i;
@@ -35,6 +32,7 @@ class JoyStick {
         }
 
         answer+=Math.min(lindex,len-index);
+
 
 
         return answer;
