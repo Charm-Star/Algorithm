@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class P1016 {
     static int answer = 0;
@@ -10,37 +12,27 @@ public class P1016 {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        long a , b;
+        int n = Integer.parseInt(br.readLine());
 
-        String[] input = br.readLine().split(" ");
+        int[] map = new int[10];
 
-        a = Long.parseLong(input[0]);
+        for (int i = 1; i <= n; i++) {
+            String num = String.valueOf(i);
 
-        b = Long.parseLong(input[1]);
+            for (int j = 0; j < num.length(); j++) {
+                int number = Integer.parseInt(String.valueOf(num.charAt(j)));
 
-        for(long i = a; i <= b ; i++){
+                map[number]++;
 
-
-            isPowNN(i);
-
-
-        }
-        System.out.println(answer);
-
-    }
-    public static void isPowNN(long number){
-        if (number== 1){
-            answer++;
-            return;
-        }
-
-
-        for (long i = 2; i <= Math.sqrt(number); i++) {
-            if(number%(i*i)==0){
-                return;
             }
         }
-        answer++;
+
+
+        for (int i = 0; i < 10; i++) {
+            System.out.print(map[i]+" ");
+        }
+
+
 
 
     }
