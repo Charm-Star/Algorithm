@@ -7,6 +7,7 @@ import java.util.Comparator;
 public class P1946 {
 
 
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,7 +27,7 @@ public class P1946 {
                 arr[i][1] = Integer.parseInt(temp[1]);
             }
 
-            Arrays.sort(arr, new Comparator<int[]>() {
+            Arrays.sort(arr, new Comparator<>() {
                 @Override
                 public int compare(int[] arr1, int[] arr2) {
                     return Integer.compare(arr1[0], arr2[0]);
