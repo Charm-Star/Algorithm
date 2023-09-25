@@ -8,7 +8,7 @@ public class P1780 {
 
     public static int[][] board;
     public static int MINUSONE = 0;
-    public static int ZERO = 0;	
+    public static int ZERO = 0;
     public static int ONE = 0;
 
     public static void main(String[] args) throws IOException {
