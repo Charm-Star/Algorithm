@@ -27,20 +27,15 @@ public class P1946 {
                 arr[i][1] = Integer.parseInt(temp[1]);
             }
 
-            Arrays.sort(arr, new Comparator<>() {
-                @Override
-                public int compare(int[] arr1, int[] arr2) {
-                    return Integer.compare(arr1[0], arr2[0]);
-                }
-            });
+            Arrays.sort(arr, Comparator.comparingInt(arr2 -> arr2[0]));
 
 
-            int ans = 1; // 서류 1등은 무조건 통과
-            int min =arr[0][1]; // 면접 점수 최소값
-            for(int i = 1; i < length; i++) { // 서류 2등부터 시작
-                if(arr[i][1] < min) { // 이전의 최소 면접 점수보다 낮으면 통과
+            int ans = 1;
+            int min =arr[0][1];
+            for(int i = 1; i < length; i++) {
+                if(arr[i][1] < min) {
                     ans++;
-                    min = arr[i][1]; // 최소 점수 갱신
+                    min = arr[i][1];
                 }
             }
             System.out.println(ans);
