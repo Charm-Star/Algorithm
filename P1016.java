@@ -1,39 +1,38 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.StringTokenizer;
 
 public class P1016 {
-    static int answer = 0;
-
-
-    public static void main(String[] args) throws IOException {
-
+    public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int n = Integer.parseInt(br.readLine());
+        long min = Long.valueOf(st.nextToken());
+        long max = Long.valueOf(st.nextToken());
 
-        int[] map = new int[10];
+        int result = (int) (max - min + 1);
+        int sqrt = ((int) Math.sqrt(max));
 
-        for (int i = 1; i <= n; i++) {
-            String num = String.valueOf(i);
+        boolean[] checks = new boolean[result];
+        long[] num = new long[result];
 
-            for (int j = 0; j < num.length(); j++) {
-                int number = Integer.parseInt(String.valueOf(num.charAt(j)));
 
-                map[number]++;
-
+        for(long i = 2; i <= sqrt; i++) {
+            long squared = i * i;
+            long start = min % squared == 0 ? min / squared : (min / squared) + 1;
+            for(long j = start; j * squared <= max; j ++) {
+                checks[(int) ( (j * squared) - min)] = true;
             }
         }
 
-
-        for (int i = 0; i < 10; i++) {
-            System.out.print(map[i]+" ");
+        // 제곱ㄴㄴ수 개수 counting
+        int count = 0;
+        for(int i = 0; i < result; i++) {
+            if(!checks[i])
+                count++;
         }
 
-
-
-
+        System.out.println(count);
     }
 }
